@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">IotAlexe1ka</string>
+    <string name="requestIp">Please insert ip of Smart Home</string>
+    <string name="sendIpToControlActivity">Go to control!</string>
+    <string name="buttonOne">Control but1</string>
+    <string name="buttonTwo">Control but2</string>
+    <string name="buttonThree">Control but3</string>
+    <string name="getTempButton">Get temperature</string>
+    <string name="getHumButton">Get humidity</string>
+    <string name="getIdButton">Get ID</string>
+
+</resources>
