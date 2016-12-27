@@ -9,6 +9,8 @@ public class Checker {
     private String addNewCommit;
     private String newBranch;
 
+    public static Integer integer;
+
 
 
 }
