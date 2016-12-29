@@ -5,10 +5,6 @@ package com.example.alexe1ka.iotalexe1ka;
  */
 
 public class Checker {
-    private String checker;
-    private String addNewCommit;
-    private String newBranch;
-
-
+    
 
 }
