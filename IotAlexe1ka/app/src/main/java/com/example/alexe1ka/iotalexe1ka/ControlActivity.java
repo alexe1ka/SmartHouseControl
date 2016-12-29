@@ -3,7 +3,6 @@ package com.example.alexe1ka.iotalexe1ka;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -76,8 +75,8 @@ public class ControlActivity extends Activity {
 
     public void getTemperature(View view) throws ExecutionException, InterruptedException {
         AsyncRequestToEsp getTemp = new AsyncRequestToEsp(this);
-        ReplyToRequest reqT = getTemp.execute(getUrl(ipAddr,GET_TEMP)).get();
-        mTemp.setText(reqT.getTemperature());
+        //ReplyToRequest reqT = getTemp.execute(getUrl(ipAddr,GET_TEMP)).get();
+        //mTemp.setText(reqT.getTemperature());
     }
 
     public void getHumidity(View view) throws ExecutionException, InterruptedException {

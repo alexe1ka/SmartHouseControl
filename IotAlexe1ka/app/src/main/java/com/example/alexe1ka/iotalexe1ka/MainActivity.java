@@ -17,7 +17,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.*;
-import static com.example.alexe1ka.iotalexe1ka.R.id.start;
 
 public class MainActivity extends Activity {
     private String mIpAddress;
@@ -232,13 +231,7 @@ public class MainActivity extends Activity {
     }
 
 
-    private String ipMaker() {
-        if (TextUtils.isEmpty(mFirstPart) || TextUtils.isEmpty(mSecondPart)
-                || TextUtils.isEmpty(mThirdPart) || TextUtils.isEmpty(mFourthPart)) {
-            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
-        }
-        return mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
-    }
+
 
 
     //обработчик второй кнопки
@@ -276,6 +269,15 @@ public class MainActivity extends Activity {
         intent.putExtra("ipAddr", s);
         startActivity(intent);
     }
+
+    private String ipMaker() {
+        if (TextUtils.isEmpty(mFirstPart) || TextUtils.isEmpty(mSecondPart)
+                || TextUtils.isEmpty(mThirdPart) || TextUtils.isEmpty(mFourthPart)) {
+            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
+        }
+        return mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
+    }
+
 
 
     //Вынести все это потом в отдельный класс

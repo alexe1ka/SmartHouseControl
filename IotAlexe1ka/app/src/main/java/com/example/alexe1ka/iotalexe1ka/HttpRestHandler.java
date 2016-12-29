@@ -2,7 +2,6 @@ package com.example.alexe1ka.iotalexe1ka;
 
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 
-import org.json.JSONException;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -19,7 +18,7 @@ import java.net.URL;
 
 public class HttpRestHandler {
 
-    public ReplyToRequest makeUrlRequest(String query, String typeOfQuery) {
+    public String makeUrlRequest(String query, String typeOfQuery) {
         String resultString = "";
 
 
@@ -34,16 +33,14 @@ public class HttpRestHandler {
             urlRequest.connect();
             InputStream in = new BufferedInputStream(urlRequest.getInputStream());
             resultString = convertToString(in);
-            replyToRequest = jsonParser.json2String(resultString);
+            //replyToRequest = jsonParser.json2String(resultString);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
-        return replyToRequest;
+        return resultString;
     }
 
 
