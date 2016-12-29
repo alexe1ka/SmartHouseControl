@@ -29,9 +29,4 @@ public class AsyncRequestToEsp extends AsyncTask<Object, Object, String> {
         super.onPostExecute(s);
         Toast.makeText(context, (CharSequence) s, Toast.LENGTH_SHORT).show(); //УБРАТЬ ЭТУ ХРЕНЬ КОГДА ВСЕ БУДЕТ ЗАШИБЕННО РАБОТАТЬ
     }
-
-
-
-
-
 }
