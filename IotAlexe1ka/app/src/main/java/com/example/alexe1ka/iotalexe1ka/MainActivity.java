@@ -45,7 +45,6 @@ public class MainActivity extends Activity {
         mFourthEt = (EditText) findViewById(R.id.fourthPartOfIp);
         mPreferences = MainActivity.this.getSharedPreferences("config_IP", Context.MODE_PRIVATE);
 
-
         mFirstEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -233,7 +232,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public String ipMaker() {
+    private String ipMaker() {
         if (TextUtils.isEmpty(mFirstPart) || TextUtils.isEmpty(mSecondPart)
                 || TextUtils.isEmpty(mThirdPart) || TextUtils.isEmpty(mFourthPart)) {
             Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
@@ -245,13 +244,12 @@ public class MainActivity extends Activity {
     //обработчик второй кнопки
     public void requestIdAndValidation(View view) {
         String s = ipMaker();
-        //если прошел валидатор - то проверяем checkInternetConnection.
+        //проверяем checkInternetConnection.
         if (isWifiConnected() || isNetworkConnected()) {
             //есть коннект к интернету
             new AsyncRequestToEsp(this).execute(getUrl(s, WEMOS_ID));
         } else {
-            //нет коннекта к интернету
-            //сделать одну кнопку и открытие экрана с настройками
+            //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
             Toast.makeText(MainActivity.this, "check connection", Toast.LENGTH_LONG).show();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Internet is not work\nPlease switching on internet or Wi-Fi network ");
@@ -265,14 +263,6 @@ public class MainActivity extends Activity {
                     Toast.makeText(MainActivity.this, "Settings Open", Toast.LENGTH_LONG).show();
                 }
             });
-/*
-                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-*/
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
         }
