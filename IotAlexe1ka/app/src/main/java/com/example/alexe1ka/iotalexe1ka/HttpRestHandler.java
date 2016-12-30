@@ -39,9 +39,7 @@ public class HttpRestHandler {
             urlRequest.connect();
             InputStream in = new BufferedInputStream(urlRequest.getInputStream());
             resultString = convertToString(in);
-
             replyToRequest = gson.fromJson(resultString,ReplyToRequest.class);
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

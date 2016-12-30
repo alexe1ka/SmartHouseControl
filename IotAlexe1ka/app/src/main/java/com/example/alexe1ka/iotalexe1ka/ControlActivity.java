@@ -7,6 +7,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
+
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.*;
 
 import java.io.IOException;
@@ -73,14 +75,14 @@ public class ControlActivity extends Activity {
 
     public void getTemperature(View view) throws ExecutionException, InterruptedException {
         AsyncRequestToEsp getTemp = new AsyncRequestToEsp(this);
-        //ReplyToRequest reqT = getTemp.execute(getUrl(ipAddr,GET_TEMP)).get();
-        //mTemp.setText(reqT.getTemperature());
+        ReplyToRequest reqT = getTemp.execute(getUrl(ipAddr,GET_TEMP)).get();
+        mTemp.setText(reqT.getTemperature());
     }
 
     public void getHumidity(View view) throws ExecutionException, InterruptedException {
-        //AsyncRequestToEsp getHum = new AsyncRequestToEsp(this);
-        //ReplyToRequest reqH = getHum.execute(getUrl(ipAddr,GET_HUM)).get();
-        //mHum.setText(reqH.getHumidity());
+        AsyncRequestToEsp getHum = new AsyncRequestToEsp(this);
+        ReplyToRequest reqH = getHum.execute(getUrl(ipAddr,GET_HUM)).get();
+        mHum.setText(reqH.getHumidity());
 
     }
 }

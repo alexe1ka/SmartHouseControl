@@ -29,6 +29,6 @@ public class AsyncRequestToEsp extends AsyncTask<Object, Object, ReplyToRequest>
     @Override
     protected void onPostExecute(ReplyToRequest s) {
         super.onPostExecute(s);
-        Toast.makeText(context, (CharSequence) s.toString(), Toast.LENGTH_SHORT).show(); //УБРАТЬ ЭТУ ХРЕНЬ КОГДА ВСЕ БУДЕТ ЗАШИБЕННО РАБОТАТЬ
+        //Toast.makeText(context, (CharSequence) s.getConnectedStatus(), Toast.LENGTH_SHORT).show(); //УБРАТЬ ЭТУ ХРЕНЬ КОГДА ВСЕ БУДЕТ ЗАШИБЕННО РАБОТАТЬ
     }
 }
