@@ -2,9 +2,11 @@ package com.example.alexe1ka.iotalexe1ka;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.LoaderManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Loader;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -16,9 +18,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.example.alexe1ka.iotalexe1ka.ConstRequest.*;
-
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements LoaderManager.LoaderCallbacks {
     private String mIpAddress;
     private EditText mFirstEt;
     private EditText mSecondEt;
@@ -228,8 +228,9 @@ public class MainActivity extends Activity {
             }
         });
 
-    }
 
+
+    }
 
 
 
@@ -240,7 +241,11 @@ public class MainActivity extends Activity {
         //проверяем checkInternetConnection.
         if (isWifiConnected() || isNetworkConnected()) {
             //есть коннект к интернету
-            new AsyncRequestToEsp(this).execute(getUrl(s, WEMOS_ID));
+            Bundle bndl = new Bundle();
+            Loader loader = getLoaderManager().initLoader(1,bndl,this);
+            loader = new AsyncLoader(MainActivity.this,);
+
+            //new AsyncRequestToEsp(this).execute(getUrl(s, WEMOS_ID));
         } else {
             //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
             Toast.makeText(MainActivity.this, "check connection", Toast.LENGTH_LONG).show();
@@ -280,6 +285,24 @@ public class MainActivity extends Activity {
 
 
 
+
+    @Override
+    public Loader onCreateLoader(int i, Bundle bundle) {
+        return new AsyncLoader(MainActivity.this, );
+    }
+
+    @Override
+    public void onLoadFinished(Loader loader, Object o) {
+        Toast.makeText(this,(CharSequence) o,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLoaderReset(Loader loader) {
+
+    }
+
+
+
     //Вынести все это потом в отдельный класс
     private boolean isNetworkConnected() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -292,4 +315,8 @@ public class MainActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) && networkInfo.isConnected();
     }
+
+
+
+
 }
