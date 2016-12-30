@@ -7,8 +7,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
-
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.*;
 
 import java.io.IOException;

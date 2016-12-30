@@ -1,6 +1,10 @@
 package com.example.alexe1ka.iotalexe1ka;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
+import com.google.gson.Gson;
 
 
 import java.io.BufferedInputStream;
@@ -8,9 +12,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * Created by alexe1ka on 12.12.2016.
@@ -18,12 +25,11 @@ import java.net.URL;
 
 public class HttpRestHandler {
 
-    public String makeUrlRequest(String query, String typeOfQuery) {
+    public ReplyToRequest makeUrlRequest(String query, String typeOfQuery) {
         String resultString = "";
-
-
-        JsonParser jsonParser = new JsonParser();
+        Gson gson = new Gson();
         ReplyToRequest replyToRequest = new ReplyToRequest();
+
 
 
         try {
@@ -33,14 +39,15 @@ public class HttpRestHandler {
             urlRequest.connect();
             InputStream in = new BufferedInputStream(urlRequest.getInputStream());
             resultString = convertToString(in);
-            //replyToRequest = jsonParser.json2String(resultString);
+
+            replyToRequest = gson.fromJson(resultString,ReplyToRequest.class);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return resultString;
+        return replyToRequest;
     }
 
 

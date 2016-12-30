@@ -1,15 +1,23 @@
 package com.example.alexe1ka.iotalexe1ka.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by alexe1ka on 19.12.2016.
  */
 
 public class ReplyToRequest {
+    @SerializedName("temperature")
     private String mTemperature;
+    @SerializedName("humidity")
     private String mHumidity;
+    @SerializedName("id")
     private String mId;
+    @SerializedName("name")
     private String mName;
+    @SerializedName("hardware")
     private String mHardware;
+    @SerializedName("connected")
     private String mConnectedStatus;
 
     public String getTemperature() {

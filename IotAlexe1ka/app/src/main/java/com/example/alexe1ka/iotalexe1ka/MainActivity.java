@@ -2,11 +2,9 @@ package com.example.alexe1ka.iotalexe1ka;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.LoaderManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.Loader;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -21,7 +19,7 @@ import android.widget.Toast;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.WEMOS_ID;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity {
     private String mIpAddress;
     private EditText mFirstEt;
     private EditText mSecondEt;
@@ -162,6 +160,7 @@ public class MainActivity extends Activity{
                             return;
                         }
 
+
                         SharedPreferences.Editor editor = mPreferences.edit();
                         editor.putInt("IP_THIRD", mThirdPart.length());
                         editor.commit();
@@ -230,7 +229,6 @@ public class MainActivity extends Activity{
 
             }
         });
-
 
 
     }
