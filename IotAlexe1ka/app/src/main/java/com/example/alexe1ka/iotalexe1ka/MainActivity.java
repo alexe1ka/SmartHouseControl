@@ -244,14 +244,17 @@ public class MainActivity extends Activity {
             //есть коннект к интернету
             new AsyncRequestToEsp(this).execute(getUrl(s, WEMOS_ID));
             AsyncRequestToEsp getId = new AsyncRequestToEsp(this);
-            ReplyToRequest reqT = getId.execute(getUrl(s,WEMOS_ID)).get();
-            Toast.makeText(MainActivity.this, (CharSequence) "Connected status: "+reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
-
+            ReplyToRequest reqT = getId.execute(getUrl(s, WEMOS_ID)).get();
+            if (reqT.getConnectedStatus() != null) {
+                Toast.makeText(MainActivity.this, (CharSequence) "Connected status: " + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MainActivity.this, (CharSequence) "Server is not response", Toast.LENGTH_SHORT).show();
+            }
 
 
         } else {
             //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
-            Toast.makeText(MainActivity.this, "check connection", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "Check connection", Toast.LENGTH_LONG).show();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Internet is not work\nPlease switching on internet or Wi-Fi network ");
             alertDialogBuilder.setPositiveButton("Open ", new DialogInterface.OnClickListener() {
