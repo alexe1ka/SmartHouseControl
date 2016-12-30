@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
+
+import java.util.concurrent.ExecutionException;
+
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.WEMOS_ID;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
@@ -155,8 +159,7 @@ public class MainActivity extends Activity {
                         }
 
                         if (Integer.parseInt(mThirdPart) > 255) {
-                            Toast.makeText(MainActivity.this, "Please input valid IP address",
-                                    Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
                             return;
                         }
 
@@ -234,12 +237,18 @@ public class MainActivity extends Activity {
     }
 
     //обработчик второй кнопки
-    public void requestIdAndValidation(View view) {
+    public void requestIdAndValidation(View view) throws ExecutionException, InterruptedException {
         String s = ipMaker();
         //проверяем checkInternetConnection.
         if (isWifiConnected() || isNetworkConnected()) {
             //есть коннект к интернету
             new AsyncRequestToEsp(this).execute(getUrl(s, WEMOS_ID));
+            AsyncRequestToEsp getId = new AsyncRequestToEsp(this);
+            ReplyToRequest reqT = getId.execute(getUrl(s,WEMOS_ID)).get();
+            Toast.makeText(MainActivity.this, (CharSequence) "Connected status: "+reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
+
+
+
         } else {
             //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
             Toast.makeText(MainActivity.this, "check connection", Toast.LENGTH_LONG).show();
