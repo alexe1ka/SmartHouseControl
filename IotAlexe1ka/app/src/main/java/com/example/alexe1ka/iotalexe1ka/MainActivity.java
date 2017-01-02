@@ -272,7 +272,6 @@ public class MainActivity extends Activity {
         }
     }
 
-
     public void onClickSendIp(View view) {
         String s = ipMaker();
         //интент на новое активити по кнопке
