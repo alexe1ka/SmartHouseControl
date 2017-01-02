@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 
 import java.util.concurrent.ExecutionException;
@@ -23,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.WEMOS_ID;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
     private String mIpAddress;
     private EditText mFirstEt;
     private EditText mSecondEt;
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
     private String mSecondPart;
     private String mThirdPart;
     private String mFourthPart;
+
 
     private SharedPreferences mPreferences;
 
@@ -232,6 +234,7 @@ public class MainActivity extends Activity {
 
             }
         });
+
     }
 
     //обработчик второй кнопки
@@ -295,4 +298,6 @@ public class MainActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) && networkInfo.isConnected();
     }
+
+
 }
