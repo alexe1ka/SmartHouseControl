@@ -3,11 +3,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
     <TextView
-        android:text="TextView"
+        android:text="humidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/TwoTextFragment"/>
+        android:id="@+id/humViewFrag"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:text="@string/getHumButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/getHumFrag"
+        android:layout_alignBaseline="@+id/humViewFrag"
+        android:layout_alignBottom="@+id/humViewFrag"
+        android:layout_alignEnd="@+id/getTempFrag"
+        android:layout_alignStart="@+id/getTempFrag"/>
+
+    <Button
+        android:text="@string/getTempButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/getTempFrag"
+        android:layout_marginEnd="15dp"
+        android:layout_above="@+id/getHumFrag"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="35dp"/>
+
+    <TextView
+        android:text="temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tempViewFrag"
+        android:layout_alignBaseline="@+id/getTempFrag"
+        android:layout_alignBottom="@+id/getTempFrag"
+        android:layout_alignStart="@+id/humViewFrag"/>
+
 </RelativeLayout>

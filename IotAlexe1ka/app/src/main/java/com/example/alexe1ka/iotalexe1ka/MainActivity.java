@@ -248,8 +248,6 @@ public class MainActivity extends Activity {
             } else {
                 Toast.makeText(MainActivity.this, (CharSequence) "Server is not response", Toast.LENGTH_SHORT).show();
             }
-
-
         } else {
             //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
             //Toast.makeText(MainActivity.this, "Check connection", Toast.LENGTH_LONG).show();
@@ -270,10 +268,9 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void onClickSendIp(View view) {
+    public void goToControl(View view) {
         String s = ipMaker();
-        //интент на новое активити по кнопке
-        Intent intent = new Intent(MainActivity.this, ControlActivity.class);
+        Intent intent = new Intent(MainActivity.this, TabControlActivity.class);
         intent.putExtra("ipAddr", s);
         startActivity(intent);
     }
@@ -297,10 +294,5 @@ public class MainActivity extends Activity {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) && networkInfo.isConnected();
-    }
-
-    public void testBarActivity(View view) {
-        Intent intentt = new Intent(MainActivity.this,TabControlActivity.class);
-        startActivity(intentt);
     }
 }

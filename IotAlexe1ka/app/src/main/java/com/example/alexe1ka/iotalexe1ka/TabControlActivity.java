@@ -25,12 +25,16 @@ public class TabControlActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private String ipAddr;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabcontrol);
-
+        ipAddr = getIntent().getExtras().getString("ipAddr");
+        Bundle bundle = new Bundle();
+        bundle.putString("ipAddress",ipAddr);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,7 +50,7 @@ public class TabControlActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new OneFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
+        adapter.addFragment(new TwoFragment(), "Two");
         adapter.addFragment(new ThreeFragment(), "THREE");
         viewPager.setAdapter(adapter);
     }
@@ -79,4 +83,9 @@ public class TabControlActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+    public String getAddr(){
+        return ipAddr;
+    }
+
 }

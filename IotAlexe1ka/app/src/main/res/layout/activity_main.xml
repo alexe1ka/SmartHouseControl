@@ -120,17 +120,22 @@
             android:text="@string/sendIpToControlActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickSendIp"
-            android:id="@+id/controlActivityButton" />
+            android:id="@+id/controlActivityButton"
+            android:onClick="goToControl"/>
 
-        <Button
-            android:text="Test button"
+        <com.dd.processbutton.FlatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:onClick="testBarActivity"/>
+            android:layout_marginBottom="16dp"
+            android:text="available"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
 
+
+
+
+
+            />
 
     </LinearLayout>
-
 </RelativeLayout>
