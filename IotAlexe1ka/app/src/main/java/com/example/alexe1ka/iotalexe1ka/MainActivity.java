@@ -232,8 +232,6 @@ public class MainActivity extends Activity {
 
             }
         });
-
-
     }
 
     //обработчик второй кнопки
@@ -287,7 +285,6 @@ public class MainActivity extends Activity {
         }
         return mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
     }
-
 
     //Вынести все это потом в отдельный класс
     private boolean isNetworkConnected() {
