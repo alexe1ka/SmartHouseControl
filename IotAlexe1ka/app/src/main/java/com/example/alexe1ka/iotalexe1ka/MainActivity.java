@@ -298,4 +298,9 @@ public class MainActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) && networkInfo.isConnected();
     }
+
+    public void testBarActivity(View view) {
+        Intent intentt = new Intent(MainActivity.this,TabControlActivity.class);
+        startActivity(intentt);
+    }
 }
