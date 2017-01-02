@@ -8,5 +8,6 @@
     <string name="getTempButton">Get temperature</string>
     <string name="getHumButton">Get humidity</string>
     <string name="getIdButton">Get ID</string>
+    <string name="font_fontFamily_medium">sans-serif</string>
 
 </resources>

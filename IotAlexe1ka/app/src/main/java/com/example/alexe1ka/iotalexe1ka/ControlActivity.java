@@ -3,7 +3,6 @@ package com.example.alexe1ka.iotalexe1ka;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -46,30 +45,30 @@ public class ControlActivity extends Activity {
     public void toggle1(View view) throws IOException {
         if (toggleButton1.isChecked()) {
             new AsyncRequestToEsp(this).execute(getUrl(ipAddr, PIN0_ON));
-            Toast.makeText(ControlActivity.this, "On", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ControlActivity.this, "On", Toast.LENGTH_SHORT).show();
         } else {
             new AsyncRequestToEsp(this).execute(getUrl(ipAddr,PIN0_OFF));
-            Toast.makeText(ControlActivity.this, "Off", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ControlActivity.this, "Off", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void toggle2(View view) {
         if (toggleButton2.isChecked()) {
             new AsyncRequestToEsp(this).execute(getUrl(ipAddr,PIN1_ON));
-            Toast.makeText(ControlActivity.this, "ON", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ControlActivity.this, "ON", Toast.LENGTH_SHORT).show();
         } else {
             new AsyncRequestToEsp(this).execute(getUrl(ipAddr,PIN1_OFF));
-            Toast.makeText(ControlActivity.this, "OFF", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ControlActivity.this, "OFF", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void toggle3(View view) {
         if (toggleButton3.isChecked()) {
             new AsyncRequestToEsp(this).execute(getUrl(ipAddr,PIN2_ON));
-            Toast.makeText(ControlActivity.this, "ON", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ControlActivity.this, "ON", Toast.LENGTH_SHORT).show();
         } else {
             new AsyncRequestToEsp(this).execute(getUrl(ipAddr,PIN2_OFF));
-            Toast.makeText(ControlActivity.this, "OFF", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ControlActivity.this, "OFF", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -81,9 +80,9 @@ public class ControlActivity extends Activity {
     }
 
     public void getHumidity(View view) throws ExecutionException, InterruptedException {
-        //AsyncRequestToEsp getHum = new AsyncRequestToEsp(this);
-        //ReplyToRequest reqH = getHum.execute(getUrl(ipAddr,GET_HUM)).get();
-        //mHum.setText(reqH.getHumidity());
+        AsyncRequestToEsp getHum = new AsyncRequestToEsp(this);
+        ReplyToRequest reqH = getHum.execute(getUrl(ipAddr,GET_HUM)).get();
+        mHum.setText(reqH.getHumidity());
 
     }
 }
