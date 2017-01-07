@@ -35,7 +35,6 @@ public class ControlActivity extends Activity {
         ipAddr = getIntent().getExtras().getString("ipAddr");
         TextView ipView = (TextView) findViewById(R.id.ipTextView);
         ipView.setText(ipAddr);
-
         mTemp = (TextView)findViewById(R.id.tempView);
         mHum = (TextView) findViewById(R.id.humView);
 
@@ -73,16 +72,5 @@ public class ControlActivity extends Activity {
     }
 
 
-    public void getTemperature(View view) throws ExecutionException, InterruptedException {
-        AsyncRequestToEsp getTemp = new AsyncRequestToEsp(this);
-        ReplyToRequest reqT = getTemp.execute(getUrl(ipAddr,GET_TEMP)).get();
-        mTemp.setText(reqT.getTemperature());
-    }
 
-    public void getHumidity(View view) throws ExecutionException, InterruptedException {
-        AsyncRequestToEsp getHum = new AsyncRequestToEsp(this);
-        ReplyToRequest reqH = getHum.execute(getUrl(ipAddr,GET_HUM)).get();
-        mHum.setText(reqH.getHumidity());
-
-    }
 }

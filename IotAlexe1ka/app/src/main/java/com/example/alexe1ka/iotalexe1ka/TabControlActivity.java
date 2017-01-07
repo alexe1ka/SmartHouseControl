@@ -26,7 +26,6 @@ public class TabControlActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private String ipAddr;
-    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +48,9 @@ public class TabControlActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "Two");
-        adapter.addFragment(new ThreeFragment(), "THREE");
+        adapter.addFragment(new OneFragment(), "Control");
+        adapter.addFragment(new TwoFragment(), "Information");
+        adapter.addFragment(new ThreeFragment(), "Vision");
         viewPager.setAdapter(adapter);
     }
 
