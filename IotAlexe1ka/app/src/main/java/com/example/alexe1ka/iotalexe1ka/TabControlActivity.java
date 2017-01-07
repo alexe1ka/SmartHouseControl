@@ -33,7 +33,7 @@ public class TabControlActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tabcontrol);
         ipAddr = getIntent().getExtras().getString("ipAddr");
         Bundle bundle = new Bundle();
-        bundle.putString("ipAddress",ipAddr);
+        bundle.putString("ipAddress", ipAddr);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -83,7 +83,7 @@ public class TabControlActivity extends AppCompatActivity {
         }
     }
 
-    public String getAddr(){
+    public String getAddr() {
         return ipAddr;
     }
 

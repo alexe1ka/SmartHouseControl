@@ -24,7 +24,7 @@ import java.util.concurrent.ExecutionException;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.WEMOS_ID;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity {
     private String mIpAddress;
     private EditText mFirstEt;
     private EditText mSecondEt;

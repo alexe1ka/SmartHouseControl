@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.alexe1ka.iotalexe1ka.AsyncRequestToEsp;
-import com.example.alexe1ka.iotalexe1ka.MainActivity;
 import com.example.alexe1ka.iotalexe1ka.R;
 import com.example.alexe1ka.iotalexe1ka.TabControlActivity;
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;

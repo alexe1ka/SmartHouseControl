@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="4dp"
+                card_view:cardCornerRadius="6dp"
+                card_view:contentPadding="20dp"
+                card_view:cardElevation="10dp"
+                tools:context="com.example.alexe1ka.iotalexe1ka.TabControlActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="168dp">
+
+        <ImageView
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_settings_ethernet_blue_700_36dp"
+            android:id="@+id/imageView2"/>
+
+        <TextView
+            android:text="Something"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descriptionText"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:layout_alignEnd="@+id/cntrlTogBut"/>
+
+        <ToggleButton
+            android:text="controlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cntrlTogBut"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
