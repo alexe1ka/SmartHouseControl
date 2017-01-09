@@ -12,118 +12,119 @@
                 tools:context="com.example.alexe1ka.iotalexe1ka.MainActivity">
 
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:text="@string/requestIp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:id="@+id/startText"
         android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="86dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="177dp"
+        android:paddingTop="50dp"
+        android:layout_above="@+id/ValidationAndGetId"
         android:layout_alignParentStart="true">
 
+        <!-- Something  comment -->
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="3"
+            android:ems="3"
+            android:hint="0"
+            android:gravity="center"
+            android:id="@+id/firstPartOfIp"
+            android:imeOptions="actionNext"
+            android:layout_weight="1" />
+
         <TextView
-            android:text="@string/requestIp"
-            android:layout_width="match_parent"
+            android:text="."
+            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:paddingBottom="10dp"
-            android:id="@+id/startText"
-            android:layout_alignParentTop="true" />
+            android:id="@+id/textView"
+            android:layout_weight="1" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="177dp"
-            android:paddingTop="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true">
-
-            <!-- Something  comment -->
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="3"
-                android:ems="3"
-                android:hint="0"
-                android:gravity="center"
-                android:id="@+id/firstPartOfIp"
-                android:imeOptions="actionNext"
-                android:layout_weight="1" />
-
-            <TextView
-                android:text="."
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:layout_weight="1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="3"
-                android:ems="3"
-                android:hint="0"
-                android:gravity="center"
-                android:id="@+id/secondPartOfIp"
-                android:imeOptions="actionNext"
-                android:layout_weight="1" />
-
-            <TextView
-                android:text="."
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView2"
-                android:layout_weight="1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="3"
-                android:ems="3"
-                android:hint="0"
-                android:gravity="center"
-                android:id="@+id/thirdPartOfIp"
-                android:imeOptions="actionNext"
-                android:layout_weight="1" />
-
-            <TextView
-                android:text="."
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:layout_weight="1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="3"
-                android:ems="3"
-                android:hint="0"
-                android:gravity="center"
-                android:imeOptions="actionNext"
-                android:id="@+id/fourthPartOfIp"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <Button
-            android:text="@string/getIdButton"
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="requestIdAndValidation"
-            android:id="@+id/ValidationAndGetId" />
+            android:inputType="number"
+            android:maxLength="3"
+            android:ems="3"
+            android:hint="0"
+            android:gravity="center"
+            android:id="@+id/secondPartOfIp"
+            android:imeOptions="actionNext"
+            android:layout_weight="1" />
 
-        <Button
-            android:text="@string/sendIpToControlActivity"
-            android:layout_width="match_parent"
+        <TextView
+            android:text="."
+            android:gravity="center"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/controlActivityButton"
-            android:onClick="goToControl"/>
+            android:id="@+id/textView2"
+            android:layout_weight="1" />
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="3"
+            android:ems="3"
+            android:hint="0"
+            android:gravity="center"
+            android:id="@+id/thirdPartOfIp"
+            android:imeOptions="actionNext"
+            android:layout_weight="1" />
 
+        <TextView
+            android:text="."
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="1" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="3"
+            android:ems="3"
+            android:hint="0"
+            android:gravity="center"
+            android:imeOptions="actionNext"
+            android:id="@+id/fourthPartOfIp"
+            android:layout_weight="1" />
     </LinearLayout>
+
+    <Button
+        android:text="@string/sendIpToControlActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/controlActivityButton"
+        android:onClick="goToControl"
+        android:layout_below="@+id/startText"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="182dp"/>
+
+    <Button
+        android:text="@string/getIdButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="requestIdAndValidation"
+        android:id="@+id/ValidationAndGetId"
+        android:layout_alignBaseline="@+id/controlActivityButton"
+        android:layout_alignBottom="@+id/controlActivityButton"
+        android:layout_alignParentStart="true"
+        />
+
 </RelativeLayout>

@@ -32,8 +32,6 @@ public class TabControlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabcontrol);
         ipAddr = getIntent().getExtras().getString("ipAddr");
-        Bundle bundle = new Bundle();
-        bundle.putString("ipAddress", ipAddr);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

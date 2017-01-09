@@ -18,9 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ControlActivity"></activity>
-        <activity android:name=".TabControlActivity">
-        </activity>
+        <activity android:name=".TabControlActivity"></activity>
     </application>
 
 </manifest>

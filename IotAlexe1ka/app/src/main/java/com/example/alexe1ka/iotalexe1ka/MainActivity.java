@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
 public class MainActivity extends Activity {
     private String mIpAddress;
+
     private EditText mFirstEt;
     private EditText mSecondEt;
     private EditText mThirdEt;
@@ -35,6 +37,10 @@ public class MainActivity extends Activity {
     private String mSecondPart;
     private String mThirdPart;
     private String mFourthPart;
+
+    private Button mValidationButton;
+    private Button mControlButton;
+
 
 
     private SharedPreferences mPreferences;
@@ -49,6 +55,14 @@ public class MainActivity extends Activity {
         mSecondEt = (EditText) findViewById(R.id.secondPartOfIp);
         mThirdEt = (EditText) findViewById(R.id.thirdPartOfIp);
         mFourthEt = (EditText) findViewById(R.id.fourthPartOfIp);
+
+        mValidationButton = (Button) findViewById(R.id.ValidationAndGetId);
+        mControlButton = (Button) findViewById(R.id.controlActivityButton);
+
+        mControlButton.setVisibility(View.INVISIBLE);
+
+
+
         mPreferences = MainActivity.this.getSharedPreferences("config_IP", Context.MODE_PRIVATE);
 
         mFirstEt.addTextChangedListener(new TextWatcher() {
@@ -248,6 +262,8 @@ public class MainActivity extends Activity {
             ReplyToRequest reqT = getId.execute(getUrl(s, WEMOS_ID)).get();
             if (reqT.getConnectedStatus() != null) {
                 Toast.makeText(MainActivity.this, (CharSequence) "Connected status: " + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
+                mValidationButton.setVisibility(View.INVISIBLE);
+                mControlButton.setVisibility(View.VISIBLE);
             } else {
                 Toast.makeText(MainActivity.this, (CharSequence) "Server is not response", Toast.LENGTH_SHORT).show();
             }

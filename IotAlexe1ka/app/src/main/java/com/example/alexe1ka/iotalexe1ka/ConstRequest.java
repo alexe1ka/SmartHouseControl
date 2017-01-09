@@ -35,7 +35,6 @@ public final class ConstRequest {
     public static final String PIN8_ON = "/digital/8/1";
     public static final String PIN8_OFF = "/digital/8/0";
 
-
     public static final String RED_ON = "/digital/6/1";
     public static final String RED_OFF = "/digital/6/0";
 
@@ -51,6 +50,4 @@ public final class ConstRequest {
     public static String getUrl(String ip, String path) {
         return "http://" + ip + path;
     }
-
-
 }
