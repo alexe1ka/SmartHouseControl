@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -25,7 +27,7 @@ import java.util.concurrent.ExecutionException;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.WEMOS_ID;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private String mIpAddress;
 
     private EditText mFirstEt;
@@ -58,6 +60,11 @@ public class MainActivity extends Activity {
 
         mValidationButton = (Button) findViewById(R.id.ValidationAndGetId);
         mControlButton = (Button) findViewById(R.id.controlActivityButton);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.mainToolbar);
+        setSupportActionBar(toolbar);
+
+
 
         mControlButton.setVisibility(View.INVISIBLE);
 
