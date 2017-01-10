@@ -34,7 +34,6 @@ public class TwoFragment extends Fragment {
     private TextView mHum;
     private TextView mTimeView;
     private String ipAddr;
-
     private DataBaseHelper myDb;
 
     public TwoFragment() {
