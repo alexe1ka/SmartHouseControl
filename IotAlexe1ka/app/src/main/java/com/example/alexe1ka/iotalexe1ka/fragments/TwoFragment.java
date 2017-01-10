@@ -16,8 +16,12 @@ import android.widget.TextView;
 import com.example.alexe1ka.iotalexe1ka.AsyncRequestToEsp;
 import com.example.alexe1ka.iotalexe1ka.R;
 import com.example.alexe1ka.iotalexe1ka.TabControlActivity;
+import com.example.alexe1ka.iotalexe1ka.data.DataBaseHelper;
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.GET_HUM;
@@ -28,7 +32,10 @@ import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 public class TwoFragment extends Fragment {
     private TextView mTemp;
     private TextView mHum;
+    private TextView mTimeView;
     private String ipAddr;
+
+    private DataBaseHelper myDb;
 
     public TwoFragment() {
     }
@@ -46,8 +53,25 @@ public class TwoFragment extends Fragment {
 
         Button getTemp = (Button) v.findViewById(R.id.getTempFrag);
         Button getHum = (Button) v.findViewById(R.id.getHumFrag);
+        Button saveDb = (Button) v.findViewById(R.id.saveDbButton);
+
         mTemp = (TextView) v.findViewById(R.id.tempViewFrag);
         mHum = (TextView) v.findViewById(R.id.humViewFrag);
+
+
+        mTimeView = (TextView)v.findViewById(R.id.timeView);
+        mTimeView.setText(getDateTime());
+
+        myDb = new DataBaseHelper(getActivity());
+
+
+        saveDb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDb.insertData(mTemp.getText().toString(), getDateTime());
+
+            }
+        });
 
         getTemp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,4 +106,12 @@ public class TwoFragment extends Fragment {
         });
         return v;
     }
+
+    private String getDateTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+
 }
