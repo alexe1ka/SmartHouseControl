@@ -4,12 +4,11 @@ package com.example.alexe1ka.iotalexe1ka.fragments;
  * Created by alexe1ka on 02.01.2017.
  */
 
-import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,8 +17,12 @@ import com.example.alexe1ka.iotalexe1ka.R;
 import com.example.alexe1ka.iotalexe1ka.TabControlActivity;
 import com.example.alexe1ka.iotalexe1ka.data.DataBaseHelper;
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.ExecutionException;
@@ -35,6 +38,10 @@ public class TwoFragment extends Fragment {
     private TextView mTimeView;
     private String ipAddr;
     private DataBaseHelper myDb;
+
+    private GraphView mGraphView;
+    private Button mPlotGraph;
+
 
     public TwoFragment() {
     }
@@ -53,24 +60,60 @@ public class TwoFragment extends Fragment {
         Button getTemp = (Button) v.findViewById(R.id.getTempFrag);
         Button getHum = (Button) v.findViewById(R.id.getHumFrag);
         Button saveDb = (Button) v.findViewById(R.id.saveDbButton);
+        mPlotGraph = (Button) v.findViewById(R.id.plotButton);
 
         mTemp = (TextView) v.findViewById(R.id.tempViewFrag);
         mHum = (TextView) v.findViewById(R.id.humViewFrag);
-
-
-        mTimeView = (TextView)v.findViewById(R.id.timeView);
-        mTimeView.setText(getDateTime());
+        mTimeView = (TextView) v.findViewById(R.id.timeView);
 
         myDb = new DataBaseHelper(getActivity());
+
+        mGraphView = (GraphView) v.findViewById(R.id.graph);
+
+        mTimeView.setText(getDateTime());
+
+
+
+        //TODO ПЕРЕДЕЛАТЬ КОГДА ЗДОРОВЬЕ БУДЕТ ПОЛУЧШЕ
+        mPlotGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList arrayTemp = myDb.getAllTemp();
+                ArrayList arrayTime = myDb.getAllTime();
+
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(0))),Double.parseDouble(String.valueOf(arrayTemp.get(0))) ),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(1))),Double.parseDouble(String.valueOf(arrayTemp.get(1)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(2))),Double.parseDouble(String.valueOf(arrayTemp.get(2)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(3))),Double.parseDouble(String.valueOf(arrayTemp.get(3)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(4))),Double.parseDouble(String.valueOf(arrayTemp.get(4)))),
+                        /*new DataPoint((Double) arrayTime.get(5), (Double) arrayTemp.get(5)),
+                        new DataPoint((Double) arrayTime.get(6), (Double) arrayTemp.get(6)),
+                        new DataPoint((Double) arrayTime.get(7), (Double) arrayTemp.get(7)),
+                        new DataPoint((Double) arrayTime.get(8), (Double) arrayTemp.get(8)),
+                        new DataPoint((Double) arrayTime.get(9), (Double) arrayTemp.get(9))*/
+                });
+                mGraphView.addSeries(series);
+            }
+        });
 
 
         saveDb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 myDb.insertData(mTemp.getText().toString(), getDateTime());
-
             }
         });
+
+
+
+
+
+
+
+
+
+
 
         getTemp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +150,8 @@ public class TwoFragment extends Fragment {
     }
 
     private String getDateTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
     }

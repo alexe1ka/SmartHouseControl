@@ -48,7 +48,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from contacts where id=" + id + "", null);
+        Cursor res = db.rawQuery("select * from temperature where id=" + id + "", null);
         return res;
     }
 
@@ -67,18 +67,31 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Integer deleteContact(Integer id) {
+    public Integer deleteData(Integer id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("contacts", "id = ? ", new String[]{Integer.toString(id)});
+        return db.delete("temperature", "id = ? ", new String[]{Integer.toString(id)});
     }
 
-    public ArrayList<String> getAllCotacts() {
+    public ArrayList<String> getAllTemp() {
         ArrayList<String> array_list = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from contacts", null);
+        Cursor res = db.rawQuery("select * from temperature", null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
-            array_list.add(res.getString(res.getColumnIndex(DATABASE_TABLE_NAME)));
+            array_list.add(res.getString(res.getColumnIndex(DATABASE_COLUMN_TEMPVALUE)));
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
+
+    public ArrayList<String> getAllTime() {
+        ArrayList<String> array_list = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from temperature", null);
+        res.moveToFirst();
+        while (res.isAfterLast() == false) {
+            array_list.add(res.getString(res.getColumnIndex(DATABASE_COLUMN_TIME)));
             res.moveToNext();
         }
         return array_list;

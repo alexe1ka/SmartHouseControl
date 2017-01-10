@@ -4,83 +4,83 @@
                 android:layout_height="match_parent">
 
 
-    <Button
-        android:text="@string/getTempButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/getTempFrag"
-        android:layout_marginEnd="28dp"
-        android:layout_alignTop="@+id/tempViewFrag"
-        android:layout_alignParentEnd="true"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/saveDbButton"
-        android:layout_centerHorizontal="true">
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dblistview"
-
-            />
-    </ScrollView>
-
     <TextView
-        android:text="temperature"
+        android:id="@+id/tempViewFrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tempViewFrag"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="37dp"
         android:layout_marginTop="97dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:text="@string/temperature"/>
 
     <Button
-        android:text="Save to DB"
+        android:id="@+id/saveDbButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/saveDbButton"
-        android:layout_below="@+id/getHumFrag"
+        android:layout_alignEnd="@+id/getTempFrag"
         android:layout_alignStart="@+id/getHumFrag"
+        android:layout_below="@+id/getHumFrag"
         android:layout_marginTop="13dp"
-        android:layout_alignEnd="@+id/getTempFrag"/>
+        android:text="@string/save_to_db"/>
 
     <TextView
-        android:text="TimeView"
+        android:id="@+id/timeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/tempViewFrag"
         android:layout_marginTop="17dp"
-        android:id="@+id/timeView"/>
+        android:text="TimeView"/>
 
     <TextView
-        android:text="humidity"
+        android:id="@+id/humViewFrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/humViewFrag"
-        android:layout_below="@+id/getTempFrag"
         android:layout_alignStart="@+id/tempViewFrag"
-        android:layout_marginTop="33dp"/>
+        android:layout_below="@+id/getTempFrag"
+        android:layout_marginTop="33dp"
+        android:text="humidity"/>
 
     <Button
-        android:text="@string/getHumButton"
+        android:id="@+id/getHumFrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/getHumFrag"
         android:layout_alignBaseline="@+id/humViewFrag"
         android:layout_alignBottom="@+id/humViewFrag"
+        android:layout_alignEnd="@+id/getTempFrag"
         android:layout_alignStart="@+id/getTempFrag"
-        android:layout_alignEnd="@+id/getTempFrag"/>
+        android:text="@string/getHumButton"/>
+
+    <Button
+        android:id="@+id/plotButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/saveDbButton"
+        android:layout_alignBottom="@+id/saveDbButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="21dp"
+        android:text="@string/plot_graph"/>
+
+    <Button
+        android:id="@+id/getTempFrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tempViewFrag"
+        android:layout_alignBottom="@+id/tempViewFrag"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="22dp"
+        android:text="@string/getTempButton"/>
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/graph"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/saveDbButton"
+        android:layout_alignEnd="@+id/saveDbButton"
+        android:layout_alignStart="@+id/plotButton"/>
+
 
 </RelativeLayout>
+
