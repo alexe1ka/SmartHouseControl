@@ -9,10 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.example.alexe1ka.iotalexe1ka.R;
-import com.example.alexe1ka.iotalexe1ka.fragments.OneFragment;
-import com.example.alexe1ka.iotalexe1ka.fragments.ThreeFragment;
-import com.example.alexe1ka.iotalexe1ka.fragments.TwoFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.ControlButtonFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.VisionFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.GetDataFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,9 +45,9 @@ public class TabControlActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "Control");
-        adapter.addFragment(new TwoFragment(), "Information");
-        adapter.addFragment(new ThreeFragment(), "Vision");
+        adapter.addFragment(new ControlButtonFragment(), "Control");
+        adapter.addFragment(new GetDataFragment(), "Information");
+        adapter.addFragment(new VisionFragment(), "Vision");
         viewPager.setAdapter(adapter);
     }
 

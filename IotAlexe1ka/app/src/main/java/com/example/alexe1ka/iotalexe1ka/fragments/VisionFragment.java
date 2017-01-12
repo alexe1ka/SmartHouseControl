@@ -12,8 +12,8 @@ import com.example.alexe1ka.iotalexe1ka.R;
  * Created by alexe1ka on 02.01.2017.
  */
 
-public class ThreeFragment extends Fragment {
-    public ThreeFragment() {
+public class VisionFragment extends Fragment {
+    public VisionFragment() {
     }
 
     @Override

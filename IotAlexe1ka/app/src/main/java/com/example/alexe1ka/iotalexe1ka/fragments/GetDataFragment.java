@@ -32,7 +32,7 @@ import static com.example.alexe1ka.iotalexe1ka.ConstRequest.GET_TEMP;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
 
-public class TwoFragment extends Fragment {
+public class GetDataFragment extends Fragment {
     private TextView mTemp;
     private TextView mHum;
     private TextView mTimeView;
@@ -43,7 +43,7 @@ public class TwoFragment extends Fragment {
     private Button mPlotGraph;
 
 
-    public TwoFragment() {
+    public GetDataFragment() {
     }
 
     @Override
@@ -104,14 +104,6 @@ public class TwoFragment extends Fragment {
                 myDb.insertData(mTemp.getText().toString(), getDateTime());
             }
         });
-
-
-
-
-
-
-
-
 
 
 

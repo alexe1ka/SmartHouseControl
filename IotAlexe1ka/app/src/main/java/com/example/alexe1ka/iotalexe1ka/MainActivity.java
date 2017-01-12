@@ -299,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, TabControlActivity.class);
         intent.putExtra("ipAddr", s);
         startActivity(intent);
+        finish();
     }
 
     private String ipMaker() {

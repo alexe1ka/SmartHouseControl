@@ -40,7 +40,7 @@ public class HttpRestHandler {
             urlRequest.setConnectTimeout(250);
             urlRequest.connect();
             resCode = urlRequest.getResponseCode();
-            if(resCode ==HttpURLConnection.HTTP_OK);
+            if(resCode ==HttpURLConnection.HTTP_OK)
             {
                 in = new BufferedInputStream(urlRequest.getInputStream());
             }

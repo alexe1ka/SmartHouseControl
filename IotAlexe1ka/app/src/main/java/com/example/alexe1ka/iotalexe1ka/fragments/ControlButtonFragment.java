@@ -17,12 +17,12 @@ import java.util.ArrayList;
  * Created by alexe1ka on 02.01.2017.
  */
 
-public class OneFragment extends Fragment {
+public class ControlButtonFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private String ipAddr;
 
 
-    public OneFragment() {
+    public ControlButtonFragment() {
     }
 
     @Override
