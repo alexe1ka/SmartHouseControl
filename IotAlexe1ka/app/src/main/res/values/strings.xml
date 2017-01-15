@@ -24,8 +24,10 @@
     <string name="connectedStatus">"Connected status: "</string>
     <string name="serverNotResponse">Server is not response</string>
     <string name="internetIsNotWorking">"Internet is not work\nPlease switching on internet or Wi-Fi network "</string>
-    <string name="fragment3description"/>
+    <string name="fragment3description">SomeText</string>
     <string name="humidityTextViewFragment2">humidity</string>
     <string name="cardViewSomethingText"/>
+    <string name="TextHumOnScreen">Humidity:</string>
+    <string name="TextTempOnScreen">Temperature:</string>
 
 </resources>

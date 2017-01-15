@@ -16,6 +16,7 @@ import com.example.alexe1ka.iotalexe1ka.fragments.ControlButtonFragment;
 import com.example.alexe1ka.iotalexe1ka.fragments.InformationFragment;
 import com.example.alexe1ka.iotalexe1ka.fragments.VisionFragment;
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
+import com.jjoe64.graphview.GraphView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,7 +42,6 @@ public class TabControlActivity extends AppCompatActivity {
     private DataBaseHelper myDb;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,20 +49,13 @@ public class TabControlActivity extends AppCompatActivity {
         ipAddr = getIntent().getExtras().getString("ipAddr");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true); стрелочка для перехода из экшн бара назад не нужна
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         //listener's
         myDb = new DataBaseHelper(getApplicationContext());
-
-
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -75,7 +68,7 @@ public class TabControlActivity extends AppCompatActivity {
                 TextView mHum = (TextView) findViewById(R.id.humViewFrag);
                 TextView mTemp = (TextView) findViewById(R.id.tempViewFrag);
 
-                if(position ==1){
+                if (position == 1) {
                     //REQUEST ONE
                     AsyncRequestToEsp getTemp = new AsyncRequestToEsp(getApplicationContext());
                     ReplyToRequest reqT = null;
@@ -100,6 +93,10 @@ public class TabControlActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     mHum.setText(reqH.getHumidity());
+
+                    GraphView graphView = (GraphView) findViewById(R.id.graph);
+
+                    graphView.removeAllSeries();
                 }
             }
 
@@ -152,7 +149,7 @@ public class TabControlActivity extends AppCompatActivity {
     }
 
     private String getDateTime() {
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()); удалил HH
         SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
