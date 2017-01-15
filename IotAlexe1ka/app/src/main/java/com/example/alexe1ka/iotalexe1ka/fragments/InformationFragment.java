@@ -58,7 +58,6 @@ public class InformationFragment extends Fragment {
 
         Button getTemp = (Button) v.findViewById(R.id.getTempFrag);
         Button getHum = (Button) v.findViewById(R.id.getHumFrag);
-        Button saveDb = (Button) v.findViewById(R.id.saveDbButton);
         mPlotGraph = (Button) v.findViewById(R.id.plotButton);
 
         mTemp = (TextView) v.findViewById(R.id.tempViewFrag);
@@ -89,13 +88,6 @@ public class InformationFragment extends Fragment {
         });
 
 
-        saveDb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myDb.insertData(mTemp.getText().toString(), getDateTime());
-            }
-        });
-
 
         getTemp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +102,7 @@ public class InformationFragment extends Fragment {
                     e.printStackTrace();
                 }
                 mTemp.setText(reqT.getTemperature());
+                myDb.insertData(mTemp.getText().toString(),getDateTime());
             }
         });
 
