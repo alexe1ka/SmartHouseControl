@@ -41,6 +41,8 @@ public class TabControlActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        //listener's
     }
 
     private void setupViewPager(ViewPager viewPager) {
