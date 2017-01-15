@@ -7,10 +7,25 @@
     <string name="buttonThree">Control but3</string>
     <string name="getTempButton">Get temperature</string>
     <string name="getHumButton">Get humidity</string>
-    <string name="getIdButton">Get ID</string>
+    <string name="getIdButton">Get status</string>
     <string name="font_fontFamily_medium">sans-serif</string>
     <string name="plot_graph">Plot Graph</string>
     <string name="save_to_db">Save to DB</string>
     <string name="temperature">temperature</string>
+    <string name="description1">Control signal 1</string>
+    <string name="description2">Control signal 2</string>
+    <string name="description3">Control signal 3</string>
+    <string name="description4">Control signal 4</string>
+    <string name="description5">Control signal 5</string>
+    <string name="tab1">Control</string>
+    <string name="tab2">Information</string>
+    <string name="tab3">Vision</string>
+    <string name="RequestValidIpAddress">Please input valid IP address</string>
+    <string name="connectedStatus">"Connected status: "</string>
+    <string name="serverNotResponse">Server is not response</string>
+    <string name="internetIsNotWorking">"Internet is not work\nPlease switching on internet or Wi-Fi network "</string>
+    <string name="fragment3description"/>
+    <string name="humidityTextViewFragment2">humidity</string>
+    <string name="cardViewSomethingText"/>
 
 </resources>

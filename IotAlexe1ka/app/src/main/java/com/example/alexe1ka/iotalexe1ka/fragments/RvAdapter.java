@@ -1,13 +1,12 @@
 package com.example.alexe1ka.iotalexe1ka.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.alexe1ka.iotalexe1ka.AsyncRequestToEsp;
@@ -32,12 +31,14 @@ import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
  * Created by alexe1ka on 07.01.2017.
  */
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
-    ArrayList<String> descriptionList;
+    private ArrayList<String> mDescriptionList;
     private Context mContext;
     private String mIpAddr;
+    private ArrayList<Integer> mImageList;
 
-    public RvAdapter(ArrayList<String> descriptionList, Context context, String ipAddr) {
-        this.descriptionList = descriptionList;
+    public RvAdapter(ArrayList<String> descriptionList, ArrayList<Integer> imageList, Context context, String ipAddr) {
+        this.mDescriptionList = descriptionList;
+        this.mImageList = imageList;
         mContext = context;
         mIpAddr = ipAddr;
     }
@@ -49,13 +50,15 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.info.setText(descriptionList.get(position));
-        holder.toggleButton.setOnClickListener(new View.OnClickListener() {
+        holder.mInfo.setText(mDescriptionList.get(position));
+        holder.mImageView.setImageResource(mImageList.get(position));
+
+        holder.mToggleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (position) {
                     case 0:
-                        if (holder.toggleButton.isChecked()) {
+                        if (holder.mToggleButton.isChecked()) {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN0_ON));
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN0_OFF));
@@ -63,7 +66,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         //Toast.makeText(mContext, "Clicked1", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        if (holder.toggleButton.isChecked()) {
+                        if (holder.mToggleButton.isChecked()) {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN1_ON));
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN1_OFF));
@@ -71,7 +74,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         //Toast.makeText(mContext, "Clicked2", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
-                        if (holder.toggleButton.isChecked()) {
+                        if (holder.mToggleButton.isChecked()) {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN2_ON));
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN2_OFF));
@@ -79,7 +82,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         //Toast.makeText(mContext, "Clicked3", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
-                        if (holder.toggleButton.isChecked()) {
+                        if (holder.mToggleButton.isChecked()) {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN3_ON));
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN3_OFF));
@@ -87,7 +90,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         //Toast.makeText(mContext, "Clicked4", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
-                        if (holder.toggleButton.isChecked()) {
+                        if (holder.mToggleButton.isChecked()) {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN4_ON));
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN4_OFF));
@@ -102,18 +105,20 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return descriptionList.size();
+        return mDescriptionList.size();
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView info;
-        ToggleButton toggleButton;
+        TextView mInfo;
+        ToggleButton mToggleButton;
+        ImageView mImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            info = (TextView) itemView.findViewById(R.id.descriptionText);
-            toggleButton = (ToggleButton) itemView.findViewById(R.id.cntrlTogBut);
+            mInfo = (TextView) itemView.findViewById(R.id.descriptionText);
+            mToggleButton = (ToggleButton) itemView.findViewById(R.id.cntrlTogBut);
+            mImageView = (ImageView) itemView.findViewById(R.id.deviceImage);
         }
     }
 }

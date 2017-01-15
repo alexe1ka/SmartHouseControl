@@ -1,6 +1,5 @@
 package com.example.alexe1ka.iotalexe1ka;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,7 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 
@@ -44,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mControlButton;
 
 
-
     private SharedPreferences mPreferences;
 
 
@@ -65,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
         mControlButton.setVisibility(View.INVISIBLE);
-
 
 
         mPreferences = MainActivity.this.getSharedPreferences("config_IP", Context.MODE_PRIVATE);
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (Integer.parseInt(mFirstPart) > 255) {
-                            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                             return;
                         }
 
@@ -130,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (Integer.parseInt(mSecondPart) > 255) {
-                            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                             return;
                         }
 
@@ -182,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (Integer.parseInt(mThirdPart) > 255) {
-                            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                             return;
                         }
 
@@ -229,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                     mFourthPart = charSequence.toString().trim();
 
                     if (Integer.parseInt(mFourthPart) > 255) {
-                        Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG)
+                        Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG)
                                 .show();
                         return;
                     }
@@ -255,7 +250,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     //обработчик второй кнопки
@@ -268,17 +262,17 @@ public class MainActivity extends AppCompatActivity {
             AsyncRequestToEsp getId = new AsyncRequestToEsp(this);
             ReplyToRequest reqT = getId.execute(getUrl(s, WEMOS_ID)).get();
             if (reqT.getConnectedStatus() != null) {
-                Toast.makeText(MainActivity.this, (CharSequence) "Connected status: " + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, (CharSequence) getString(R.string.connectedStatus) + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
                 mValidationButton.setVisibility(View.INVISIBLE);
                 mControlButton.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(MainActivity.this, (CharSequence) "Server is not response", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, (CharSequence) getString(R.string.serverNotResponse), Toast.LENGTH_SHORT).show();
             }
         } else {
             //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
             //Toast.makeText(MainActivity.this, "Check connection", Toast.LENGTH_LONG).show();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Internet is not work\nPlease switching on internet or Wi-Fi network ");
+            alertDialogBuilder.setMessage(R.string.internetIsNotWorking);
             alertDialogBuilder.setPositiveButton("Open ", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
@@ -286,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent settingsIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
                     settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(settingsIntent);
-                    Toast.makeText(MainActivity.this, "Settings Open", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.this, "Settings Open", Toast.LENGTH_LONG).show();
                 }
             });
             AlertDialog alertDialog = alertDialogBuilder.create();
@@ -305,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
     private String ipMaker() {
         if (TextUtils.isEmpty(mFirstPart) || TextUtils.isEmpty(mSecondPart)
                 || TextUtils.isEmpty(mThirdPart) || TextUtils.isEmpty(mFourthPart)) {
-            Toast.makeText(MainActivity.this, "Please input valid IP address", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
         }
         return mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
     }
@@ -322,6 +316,4 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         return networkInfo != null && (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) && networkInfo.isConnected();
     }
-
-
 }

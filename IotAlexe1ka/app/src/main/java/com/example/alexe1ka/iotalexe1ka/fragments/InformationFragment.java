@@ -32,10 +32,9 @@ import static com.example.alexe1ka.iotalexe1ka.ConstRequest.GET_TEMP;
 import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
 
 
-public class GetDataFragment extends Fragment {
+public class InformationFragment extends Fragment {
     private TextView mTemp;
     private TextView mHum;
-    private TextView mTimeView;
     private String ipAddr;
     private DataBaseHelper myDb;
 
@@ -43,7 +42,7 @@ public class GetDataFragment extends Fragment {
     private Button mPlotGraph;
 
 
-    public GetDataFragment() {
+    public InformationFragment() {
     }
 
     @Override
@@ -64,14 +63,11 @@ public class GetDataFragment extends Fragment {
 
         mTemp = (TextView) v.findViewById(R.id.tempViewFrag);
         mHum = (TextView) v.findViewById(R.id.humViewFrag);
-        mTimeView = (TextView) v.findViewById(R.id.timeView);
+
 
         myDb = new DataBaseHelper(getActivity());
 
         mGraphView = (GraphView) v.findViewById(R.id.graph);
-
-        mTimeView.setText(getDateTime());
-
 
 
         //TODO ПЕРЕДЕЛАТЬ КОГДА ЗДОРОВЬЕ БУДЕТ ПОЛУЧШЕ
@@ -81,17 +77,12 @@ public class GetDataFragment extends Fragment {
                 ArrayList arrayTemp = myDb.getAllTemp();
                 ArrayList arrayTime = myDb.getAllTime();
 
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(0))),Double.parseDouble(String.valueOf(arrayTemp.get(0))) ),
-                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(1))),Double.parseDouble(String.valueOf(arrayTemp.get(1)))),
-                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(2))),Double.parseDouble(String.valueOf(arrayTemp.get(2)))),
-                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(3))),Double.parseDouble(String.valueOf(arrayTemp.get(3)))),
-                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(4))),Double.parseDouble(String.valueOf(arrayTemp.get(4)))),
-                        /*new DataPoint((Double) arrayTime.get(5), (Double) arrayTemp.get(5)),
-                        new DataPoint((Double) arrayTime.get(6), (Double) arrayTemp.get(6)),
-                        new DataPoint((Double) arrayTime.get(7), (Double) arrayTemp.get(7)),
-                        new DataPoint((Double) arrayTime.get(8), (Double) arrayTemp.get(8)),
-                        new DataPoint((Double) arrayTime.get(9), (Double) arrayTemp.get(9))*/
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[]{
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(0))), Double.parseDouble(String.valueOf(arrayTemp.get(0)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(1))), Double.parseDouble(String.valueOf(arrayTemp.get(1)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(2))), Double.parseDouble(String.valueOf(arrayTemp.get(2)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(3))), Double.parseDouble(String.valueOf(arrayTemp.get(3)))),
+                        new DataPoint(Double.parseDouble(String.valueOf(arrayTime.get(4))), Double.parseDouble(String.valueOf(arrayTemp.get(4)))),
                 });
                 mGraphView.addSeries(series);
             }
@@ -104,7 +95,6 @@ public class GetDataFragment extends Fragment {
                 myDb.insertData(mTemp.getText().toString(), getDateTime());
             }
         });
-
 
 
         getTemp.setOnClickListener(new View.OnClickListener() {

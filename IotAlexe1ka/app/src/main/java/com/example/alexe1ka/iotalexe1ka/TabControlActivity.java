@@ -10,8 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.example.alexe1ka.iotalexe1ka.fragments.ControlButtonFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.InformationFragment;
 import com.example.alexe1ka.iotalexe1ka.fragments.VisionFragment;
-import com.example.alexe1ka.iotalexe1ka.fragments.GetDataFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +47,9 @@ public class TabControlActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ControlButtonFragment(), "Control");
-        adapter.addFragment(new GetDataFragment(), "Information");
-        adapter.addFragment(new VisionFragment(), "Vision");
+        adapter.addFragment(new ControlButtonFragment(), getString(R.string.tab1));
+        adapter.addFragment(new InformationFragment(), getString(R.string.tab2));
+        adapter.addFragment(new VisionFragment(), getString(R.string.tab3));
         viewPager.setAdapter(adapter);
 
     }

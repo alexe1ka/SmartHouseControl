@@ -2,7 +2,6 @@ package com.example.alexe1ka.iotalexe1ka;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 

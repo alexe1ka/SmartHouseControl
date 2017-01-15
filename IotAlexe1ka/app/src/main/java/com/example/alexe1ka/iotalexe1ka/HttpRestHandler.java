@@ -1,23 +1,16 @@
 package com.example.alexe1ka.iotalexe1ka;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 import com.google.gson.Gson;
-
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * Created by alexe1ka on 12.12.2016.
@@ -29,7 +22,7 @@ public class HttpRestHandler {
         String resultString = "";
         Gson gson = new Gson();
         ReplyToRequest replyToRequest = new ReplyToRequest();
-        InputStream in=null;
+        InputStream in = null;
         int resCode;
 
         try {
@@ -40,8 +33,7 @@ public class HttpRestHandler {
             urlRequest.setConnectTimeout(250);
             urlRequest.connect();
             resCode = urlRequest.getResponseCode();
-            if(resCode ==HttpURLConnection.HTTP_OK)
-            {
+            if (resCode == HttpURLConnection.HTTP_OK) {
                 in = new BufferedInputStream(urlRequest.getInputStream());
             }
             resultString = convertToString(in);

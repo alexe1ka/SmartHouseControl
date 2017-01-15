@@ -20,11 +20,10 @@
         <ImageView
             android:layout_width="105dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_settings_ethernet_blue_700_36dp"
-            android:id="@+id/imageView2"/>
+            android:id="@+id/deviceImage"/>
 
         <TextView
-            android:text="Something"
+            android:text="@string/cardViewSomethingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/descriptionText"
@@ -33,7 +32,7 @@
             android:layout_alignEnd="@+id/cntrlTogBut"/>
 
         <ToggleButton
-            android:text="controlButton"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cntrlTogBut"

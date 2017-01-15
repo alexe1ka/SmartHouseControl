@@ -24,14 +24,7 @@
         android:layout_marginTop="13dp"
         android:text="@string/save_to_db"/>
 
-    <TextView
-        android:id="@+id/timeView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/tempViewFrag"
-        android:layout_marginTop="17dp"
-        android:text="TimeView"/>
+
 
     <TextView
         android:id="@+id/humViewFrag"
@@ -40,7 +33,7 @@
         android:layout_alignStart="@+id/tempViewFrag"
         android:layout_below="@+id/getTempFrag"
         android:layout_marginTop="33dp"
-        android:text="humidity"/>
+        android:text="@string/humidityTextViewFragment2"/>
 
     <Button
         android:id="@+id/getHumFrag"
