@@ -1,38 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="20dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.alexe1ka.iotalexe1ka.MainActivity">
+    android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <LinearLayout
-        android:orientation="vertical"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/mainToolbar"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:paddingBottom="20dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.alexe1ka.iotalexe1ka.MainActivity">
+
 
         <TextView
             android:text="@string/requestIp"
             android:layout_width="match_parent"
+            android:gravity="center"
+            android:textSize="25sp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:paddingBottom="10dp"
             android:id="@+id/startText"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="86dp"/>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="177dp"
             android:paddingTop="50dp"
-            android:layout_alignParentTop="true"
+            android:layout_above="@+id/ValidationAndGetId"
             android:layout_alignParentStart="true">
 
             <!-- Something  comment -->
@@ -46,7 +64,7 @@
                 android:gravity="center"
                 android:id="@+id/firstPartOfIp"
                 android:imeOptions="actionNext"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <TextView
                 android:text="."
@@ -54,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -66,7 +84,7 @@
                 android:gravity="center"
                 android:id="@+id/secondPartOfIp"
                 android:imeOptions="actionNext"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <TextView
                 android:text="."
@@ -74,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -86,7 +104,7 @@
                 android:gravity="center"
                 android:id="@+id/thirdPartOfIp"
                 android:imeOptions="actionNext"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <TextView
                 android:text="."
@@ -94,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView3"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -106,31 +124,30 @@
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:id="@+id/fourthPartOfIp"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
         </LinearLayout>
+
+        <Button
+            android:text="@string/sendIpToControlActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/controlActivityButton"
+            android:onClick="goToControl"
+            android:layout_below="@+id/startText"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="182dp"/>
 
         <Button
             android:text="@string/getIdButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="requestIdAndValidation"
-            android:id="@+id/ValidationAndGetId" />
+            android:id="@+id/ValidationAndGetId"
+            android:layout_alignBaseline="@+id/controlActivityButton"
+            android:layout_alignBottom="@+id/controlActivityButton"
+            android:layout_alignParentStart="true"
+            />
 
-        <Button
-            android:text="@string/sendIpToControlActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onClickSendIp"
-            android:id="@+id/controlActivityButton" />
+    </RelativeLayout>
 
-        <Button
-            android:text="Test button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:onClick="testBarActivity"/>
-
-
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

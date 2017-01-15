@@ -29,17 +29,24 @@ public class HttpRestHandler {
         String resultString = "";
         Gson gson = new Gson();
         ReplyToRequest replyToRequest = new ReplyToRequest();
-
-
+        InputStream in=null;
+        int resCode;
 
         try {
             URL url = new URL(query);
             HttpURLConnection urlRequest = (HttpURLConnection) url.openConnection();
             urlRequest.setRequestMethod(typeOfQuery);
+
+            urlRequest.setConnectTimeout(250);
             urlRequest.connect();
-            InputStream in = new BufferedInputStream(urlRequest.getInputStream());
+            resCode = urlRequest.getResponseCode();
+            if(resCode ==HttpURLConnection.HTTP_OK)
+            {
+                in = new BufferedInputStream(urlRequest.getInputStream());
+            }
             resultString = convertToString(in);
-            replyToRequest = gson.fromJson(resultString,ReplyToRequest.class);
+            replyToRequest = gson.fromJson(resultString, ReplyToRequest.class);
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -47,7 +54,6 @@ public class HttpRestHandler {
         }
         return replyToRequest;
     }
-
 
     public String convertToString(InputStream is) throws IOException {
         BufferedReader r = new BufferedReader(new InputStreamReader(is));

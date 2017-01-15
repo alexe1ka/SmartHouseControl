@@ -9,10 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import com.example.alexe1ka.iotalexe1ka.R;
-import com.example.alexe1ka.iotalexe1ka.fragments.OneFragment;
-import com.example.alexe1ka.iotalexe1ka.fragments.ThreeFragment;
-import com.example.alexe1ka.iotalexe1ka.fragments.TwoFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.ControlButtonFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.VisionFragment;
+import com.example.alexe1ka.iotalexe1ka.fragments.GetDataFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +24,13 @@ public class TabControlActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private String ipAddr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabcontrol);
-
+        ipAddr = getIntent().getExtras().getString("ipAddr");
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -41,14 +41,17 @@ public class TabControlActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        //listener's
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
-        adapter.addFragment(new ThreeFragment(), "THREE");
+        adapter.addFragment(new ControlButtonFragment(), "Control");
+        adapter.addFragment(new GetDataFragment(), "Information");
+        adapter.addFragment(new VisionFragment(), "Vision");
         viewPager.setAdapter(adapter);
+
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -79,4 +82,9 @@ public class TabControlActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
+    public String getAddr() {
+        return ipAddr;
+    }
+
 }

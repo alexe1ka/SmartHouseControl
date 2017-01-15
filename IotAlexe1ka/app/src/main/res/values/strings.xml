@@ -9,5 +9,8 @@
     <string name="getHumButton">Get humidity</string>
     <string name="getIdButton">Get ID</string>
     <string name="font_fontFamily_medium">sans-serif</string>
+    <string name="plot_graph">Plot Graph</string>
+    <string name="save_to_db">Save to DB</string>
+    <string name="temperature">temperature</string>
 
 </resources>
