@@ -88,7 +88,6 @@ public class InformationFragment extends Fragment {
         });
 
 
-
         getTemp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,7 +101,7 @@ public class InformationFragment extends Fragment {
                     e.printStackTrace();
                 }
                 mTemp.setText(reqT.getTemperature());
-                myDb.insertData(mTemp.getText().toString(),getDateTime());
+                myDb.insertData(mTemp.getText().toString(), getDateTime());
             }
         });
 
@@ -130,6 +129,4 @@ public class InformationFragment extends Fragment {
         Date date = new Date();
         return dateFormat.format(date);
     }
-
-
 }
