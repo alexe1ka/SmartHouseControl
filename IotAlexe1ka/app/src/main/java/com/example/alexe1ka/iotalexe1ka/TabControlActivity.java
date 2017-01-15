@@ -49,6 +49,7 @@ public class TabControlActivity extends AppCompatActivity {
         adapter.addFragment(new GetDataFragment(), "Information");
         adapter.addFragment(new VisionFragment(), "Vision");
         viewPager.setAdapter(adapter);
+
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
