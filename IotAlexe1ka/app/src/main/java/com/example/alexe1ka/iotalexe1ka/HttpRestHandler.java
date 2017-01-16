@@ -1,5 +1,7 @@
 package com.example.alexe1ka.iotalexe1ka;
 
+import android.widget.Toast;
+
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 import com.google.gson.Gson;
 
@@ -17,6 +19,7 @@ import java.net.URL;
  */
 
 public class HttpRestHandler {
+    private int mStatus;
 
     public ReplyToRequest makeUrlRequest(String query, String typeOfQuery) {
         String resultString = "";
@@ -29,8 +32,7 @@ public class HttpRestHandler {
             URL url = new URL(query);
             HttpURLConnection urlRequest = (HttpURLConnection) url.openConnection();
             urlRequest.setRequestMethod(typeOfQuery);
-
-            urlRequest.setConnectTimeout(250);
+            urlRequest.setConnectTimeout(200);
             urlRequest.connect();
             resCode = urlRequest.getResponseCode();
             if (resCode == HttpURLConnection.HTTP_OK) {
@@ -38,7 +40,6 @@ public class HttpRestHandler {
             }
             resultString = convertToString(in);
             replyToRequest = gson.fromJson(resultString, ReplyToRequest.class);
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -56,4 +57,9 @@ public class HttpRestHandler {
         }
         return new String(total);
     }
+
+    public int getStatus(){
+        return mStatus;
+    }
+
 }

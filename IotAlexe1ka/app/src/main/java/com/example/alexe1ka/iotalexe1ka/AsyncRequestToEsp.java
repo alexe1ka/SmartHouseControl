@@ -2,6 +2,7 @@ package com.example.alexe1ka.iotalexe1ka;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 
@@ -28,6 +29,8 @@ public class AsyncRequestToEsp extends AsyncTask<Object, Object, ReplyToRequest>
     @Override
     protected void onPostExecute(ReplyToRequest s) {
         super.onPostExecute(s);
-        //Toast.makeText(context, (CharSequence) "Connected status:"+s.getConnectedStatus(), Toast.LENGTH_SHORT).show(); //УБРАТЬ ЭТУ ХРЕНЬ КОГДА ВСЕ БУДЕТ ЗАШИБЕННО РАБОТАТЬ
+        if(s.getConnectedStatus()==null){
+            Toast.makeText(context,"Server error", Toast.LENGTH_SHORT).show();
+        }
     }
 }
