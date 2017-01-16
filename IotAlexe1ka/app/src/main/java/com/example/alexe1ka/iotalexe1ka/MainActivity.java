@@ -265,15 +265,16 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, (CharSequence) getString(R.string.connectedStatus) + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
                 mValidationButton.setVisibility(View.INVISIBLE);
                 mControlButton.setVisibility(View.VISIBLE);
-            } else {
-                Toast.makeText(MainActivity.this, (CharSequence) getString(R.string.serverNotResponse), Toast.LENGTH_SHORT).show();
             }
+            //else {
+                //Toast.makeText(MainActivity.this,getString(R.string.serverNotResponse), Toast.LENGTH_SHORT).show();
+            //}
         } else {
             //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
             //Toast.makeText(MainActivity.this, "Check connection", Toast.LENGTH_LONG).show();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage(R.string.internetIsNotWorking);
-            alertDialogBuilder.setPositiveButton("Open ", new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
                     //открытие настроек при выключенном интернете

@@ -29,13 +29,16 @@
             android:id="@+id/descriptionText"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
-            android:layout_alignEnd="@+id/cntrlTogBut"/>
+            android:layout_alignEnd="@+id/cntrlTogBut"
+            android:textSize="24sp"/>
 
         <ToggleButton
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cntrlTogBut"
+            android:textSize="18sp"
+            style="@android:style/Widget.Button.Toggle"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"/>
 

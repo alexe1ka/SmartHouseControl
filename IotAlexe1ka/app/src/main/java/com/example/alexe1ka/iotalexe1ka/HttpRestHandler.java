@@ -19,7 +19,6 @@ import java.net.URL;
  */
 
 public class HttpRestHandler {
-    private int mStatus;
 
     public ReplyToRequest makeUrlRequest(String query, String typeOfQuery) {
         String resultString = "";
@@ -57,9 +56,4 @@ public class HttpRestHandler {
         }
         return new String(total);
     }
-
-    public int getStatus(){
-        return mStatus;
-    }
-
 }

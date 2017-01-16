@@ -30,7 +30,7 @@ public class AsyncRequestToEsp extends AsyncTask<Object, Object, ReplyToRequest>
     protected void onPostExecute(ReplyToRequest s) {
         super.onPostExecute(s);
         if(s.getConnectedStatus()==null){
-            Toast.makeText(context,"Server error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,R.string.serverNotResponse, Toast.LENGTH_SHORT).show();
         }
     }
 }

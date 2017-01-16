@@ -64,7 +64,8 @@
                 android:gravity="center"
                 android:id="@+id/firstPartOfIp"
                 android:imeOptions="actionNext"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:textSize="18sp"/>
 
             <TextView
                 android:text="."
@@ -135,7 +136,8 @@
             android:onClick="goToControl"
             android:layout_below="@+id/startText"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="182dp"/>
+            android:layout_marginTop="182dp"
+            style="@android:style/Widget.Button"/>
 
         <Button
             android:text="@string/getIdButton"
@@ -146,7 +148,7 @@
             android:layout_alignBaseline="@+id/controlActivityButton"
             android:layout_alignBottom="@+id/controlActivityButton"
             android:layout_alignParentStart="true"
-            />
+            style="@android:style/Widget.Button"/>
 
     </RelativeLayout>
 

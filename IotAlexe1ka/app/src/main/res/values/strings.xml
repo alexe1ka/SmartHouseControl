@@ -1,33 +1,28 @@
 <resources>
-    <string name="app_name">IotAlexe1ka</string>
-    <string name="requestIp">Please insert ip of Smart Home</string>
+    <string name="app_name">IoT</string>
+    <string name="requestIp">Please insert IP of Smart Home</string>
     <string name="sendIpToControlActivity">Go to control!</string>
-    <string name="buttonOne">Control but1</string>
-    <string name="buttonTwo">Control but2</string>
-    <string name="buttonThree">Control but3</string>
-    <string name="getTempButton">Get temperature</string>
-    <string name="getHumButton">Get humidity</string>
     <string name="getIdButton">Get status</string>
     <string name="font_fontFamily_medium">sans-serif</string>
     <string name="plot_graph">Plot Graph</string>
-    <string name="save_to_db">Save to DB</string>
     <string name="temperature">temperature</string>
-    <string name="description1">Control signal 1</string>
-    <string name="description2">Control signal 2</string>
-    <string name="description3">Control signal 3</string>
-    <string name="description4">Control signal 4</string>
-    <string name="description5">Control signal 5</string>
+    <string name="description1">Controlled device 1</string>
+    <string name="description2">Controlled device 2</string>
+    <string name="description3">Controlled device 3</string>
+    <string name="description4">Controlled device 4</string>
+    <string name="description5">Controlled device 5</string>
     <string name="tab1">Control</string>
     <string name="tab2">Information</string>
     <string name="tab3">Vision</string>
     <string name="RequestValidIpAddress">Please input valid IP address</string>
-    <string name="connectedStatus">"Connected status: "</string>
+    <string name="connectedStatus">Connected status:</string>
     <string name="serverNotResponse">Server is not response</string>
-    <string name="internetIsNotWorking">"Internet is not work\nPlease switching on internet or Wi-Fi network "</string>
-    <string name="fragment3description">SomeText</string>
+    <string name="internetIsNotWorking">"Internet is not work\nPlease switching on internet or Wi-Fi connection "</string>
+    <string name="fragment3description">Vision fragment</string>
     <string name="humidityTextViewFragment2">humidity</string>
     <string name="cardViewSomethingText"/>
     <string name="TextHumOnScreen">Humidity:</string>
     <string name="TextTempOnScreen">Temperature:</string>
+    <string name="open">Open settings</string>
 
 </resources>
