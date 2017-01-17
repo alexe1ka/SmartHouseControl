@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">IoT</string>
-    <string name="RequestValidIpAddress">Введите корректный IP-адресс</string>
+    <string name="RequestValidIpAddress">Введите корректный IP-адрес</string>
     <string name="TextHumOnScreen">Влажность:</string>
     <string name="TextTempOnScreen">Температура:</string>
     <string name="connectedStatus">Статус соединения: </string>

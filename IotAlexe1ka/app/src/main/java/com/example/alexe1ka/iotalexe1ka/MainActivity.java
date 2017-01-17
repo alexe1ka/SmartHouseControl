@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
         mControlButton.setVisibility(View.INVISIBLE);
 
-
         mPreferences = MainActivity.this.getSharedPreferences("config_IP", Context.MODE_PRIVATE);
 
         mFirstEt.addTextChangedListener(new TextWatcher() {
@@ -206,9 +205,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (i == 0 && charSequence.length() == 0) {
-                    mSecondEt.setFocusable(true);
-                    mSecondEt.requestFocus();
-                    mSecondEt.setSelection(mPreferences.getInt("IP_THIRD", 0));
+                    mThirdEt.setFocusable(true);
+                    mThirdEt.requestFocus();
+                    mThirdEt.setSelection(mPreferences.getInt("IP_THIRD", 0));
                 }
             }
 
@@ -221,27 +220,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void requestIdAndValidation(View view) throws ExecutionException, InterruptedException {
         String s = ipMaker();
-        if (isWifiConnected() || isNetworkConnected()) {
-            AsyncRequestToEsp getId = new AsyncRequestToEsp(this);
-            ReplyToRequest reqT = getId.execute(getUrl(s, WEMOS_ID)).get();
-            if (reqT.getConnectedStatus() != null) {
-                Toast.makeText(MainActivity.this, getString(R.string.connectedStatus) + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
-                mValidationButton.setVisibility(View.INVISIBLE);
-                mControlButton.setVisibility(View.VISIBLE);
+        if (s != null) {
+            if (isWifiConnected() || isNetworkConnected()) {
+                AsyncRequestToEsp getId = new AsyncRequestToEsp(this);
+                ReplyToRequest reqT = getId.execute(getUrl(s, WEMOS_ID)).get();
+                if (reqT.getConnectedStatus() != null) {
+                    Toast.makeText(MainActivity.this, getString(R.string.connectedStatus) + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
+                    mValidationButton.setVisibility(View.INVISIBLE);
+                    mControlButton.setVisibility(View.VISIBLE);
+                }
+            } else {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setMessage(R.string.internetIsNotWorking);
+                alertDialogBuilder.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Intent settingsIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
+                        settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(settingsIntent);
+                    }
+                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         } else {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage(R.string.internetIsNotWorking);
-            alertDialogBuilder.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface arg0, int arg1) {
-                    Intent settingsIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
-                    settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(settingsIntent);
-                }
-            });
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
+            Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -256,9 +259,11 @@ public class MainActivity extends AppCompatActivity {
     private String ipMaker() {
         if (TextUtils.isEmpty(mFirstPart) || TextUtils.isEmpty(mSecondPart)
                 || TextUtils.isEmpty(mThirdPart) || TextUtils.isEmpty(mFourthPart)) {
-            Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
+            mIpAddress = null;
+        } else {
+            mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
         }
-        return mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
+        return mIpAddress;
     }
 
     private boolean isNetworkConnected() {
