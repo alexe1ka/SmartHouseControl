@@ -77,17 +77,4 @@ public class InformationFragment extends Fragment {
         });
         return v;
     }
-
-
-    private DataPoint[] generateData() {
-        int count = mSizeArr;
-        DataPoint[] values = new DataPoint[count];
-        for (int i = mSizeArr - 6; i < mSizeArr; i++) {
-            double x = Double.parseDouble(String.valueOf(mArrayTime.get(i)));
-            double y = Double.parseDouble(String.valueOf(mArrayTemp.get(i)));
-            DataPoint v = new DataPoint(x, y);
-            values[i] = v;
-        }
-        return values;
-    }
 }
