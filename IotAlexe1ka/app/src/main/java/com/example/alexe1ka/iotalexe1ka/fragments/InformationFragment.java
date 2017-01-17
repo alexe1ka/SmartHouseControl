@@ -70,9 +70,6 @@ public class InformationFragment extends Fragment {
                 series.setDrawDataPoints(true);
                 series.setDataPointsRadius(10);
                 mGraphView.addSeries(series);
-
-
-
             }
         });
         return v;

@@ -53,7 +53,6 @@ public class ControlButtonFragment extends Fragment {
         imageList.add(R.drawable.ic_looks_4_blue_a400_48dp);
         imageList.add(R.drawable.ic_looks_5_blue_a400_48dp);
 
-
         mRecyclerView.setAdapter(new RvAdapter(descriptionList, imageList, getContext(), ipAddr));
 
         return view;

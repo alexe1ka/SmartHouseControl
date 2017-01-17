@@ -5,7 +5,6 @@ package com.example.alexe1ka.iotalexe1ka;
  */
 
 public final class ConstRequest {
-    //потом адрес сервера вытащить и оставить в запросах только /*....
     public static final String WEMOS_ID = "/id";
 
     public static final String PIN0_ON = "/digital/0/1";

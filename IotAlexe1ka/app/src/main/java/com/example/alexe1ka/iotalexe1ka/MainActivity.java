@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
 
-
         mControlButton.setVisibility(View.INVISIBLE);
 
 
@@ -88,17 +87,13 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                             return;
                         }
-
                         SharedPreferences.Editor editor = mPreferences.edit();
                         editor.putInt("IP_FIRST", mFirstPart.length());
                         editor.commit();
-
                         mSecondEt.setFocusable(true);
                         mSecondEt.requestFocus();
                     }
                 }
-
-
             }
 
             @Override
@@ -128,25 +123,19 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                             return;
                         }
-
                         SharedPreferences.Editor editor = mPreferences.edit();
                         editor.putInt("IP_SECOND", mSecondPart.length());
                         editor.commit();
-
                         mThirdEt.setFocusable(true);
                         mThirdEt.requestFocus();
                     }
                 }
 
-                /**
-                 *  When user deletes the input, set focus to previous EditText
-                 */
                 if (i == 0 && charSequence.length() == 0) {
                     mFirstEt.setFocusable(true);
                     mFirstEt.requestFocus();
                     mFirstEt.setSelection(mPreferences.getInt("IP_FIRST", 0));
                 }
-
             }
 
             @Override
@@ -163,10 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                /**
-                 * Check if the IP address is valid.
-                 * set focus to next EditText.
-                 */
                 if (charSequence != null && charSequence.length() > 0) {
                     if (charSequence.length() > 2 || charSequence.toString().trim().contains(".")) {
                         if (charSequence.toString().trim().contains(".")) {
@@ -180,26 +165,19 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                             return;
                         }
-
-
                         SharedPreferences.Editor editor = mPreferences.edit();
                         editor.putInt("IP_THIRD", mThirdPart.length());
                         editor.commit();
-
                         mFourthEt.setFocusable(true);
                         mFourthEt.requestFocus();
                     }
                 }
 
-                /**
-                 * When user deletes the input, set focus to previous EditText
-                 */
                 if (i == 0 && charSequence.length() == 0) {
                     mSecondEt.setFocusable(true);
                     mSecondEt.requestFocus();
                     mSecondEt.setSelection(mPreferences.getInt("IP_SECOND", 0));
                 }
-
             }
 
             @Override
@@ -216,33 +194,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                /**
-                 * Check if the IP address is valid.
-                 * set focus to next EditText.
-                 */
                 if (charSequence != null && charSequence.length() > 0) {
                     mFourthPart = charSequence.toString().trim();
-
                     if (Integer.parseInt(mFourthPart) > 255) {
-                        Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG)
-                                .show();
+                        Toast.makeText(MainActivity.this, R.string.RequestValidIpAddress, Toast.LENGTH_LONG).show();
                         return;
                     }
-
                     SharedPreferences.Editor editor = mPreferences.edit();
                     editor.putInt("IP_FOURTH", mFourthPart.length());
                     editor.commit();
                 }
 
-                /**
-                 * When user deletes the input, set focus to previous EditText
-                 */
                 if (i == 0 && charSequence.length() == 0) {
                     mSecondEt.setFocusable(true);
                     mSecondEt.requestFocus();
                     mSecondEt.setSelection(mPreferences.getInt("IP_THIRD", 0));
                 }
-
             }
 
             @Override
@@ -252,36 +219,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //обработчик второй кнопки
     public void requestIdAndValidation(View view) throws ExecutionException, InterruptedException {
         String s = ipMaker();
-        //проверяем checkInternetConnection.
         if (isWifiConnected() || isNetworkConnected()) {
-            //есть коннект к интернету
-            new AsyncRequestToEsp(this).execute(getUrl(s, WEMOS_ID));
             AsyncRequestToEsp getId = new AsyncRequestToEsp(this);
             ReplyToRequest reqT = getId.execute(getUrl(s, WEMOS_ID)).get();
             if (reqT.getConnectedStatus() != null) {
-                Toast.makeText(MainActivity.this, (CharSequence) getString(R.string.connectedStatus) + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, getString(R.string.connectedStatus) + reqT.getConnectedStatus(), Toast.LENGTH_SHORT).show();
                 mValidationButton.setVisibility(View.INVISIBLE);
                 mControlButton.setVisibility(View.VISIBLE);
             }
-            //else {
-                //Toast.makeText(MainActivity.this,getString(R.string.serverNotResponse), Toast.LENGTH_SHORT).show();
-            //}
         } else {
-            //нет коннекта к интернету сделать одну кнопку и открытие экрана с настройками
-            //Toast.makeText(MainActivity.this, "Check connection", Toast.LENGTH_LONG).show();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage(R.string.internetIsNotWorking);
             alertDialogBuilder.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
-                    //открытие настроек при выключенном интернете
                     Intent settingsIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
                     settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(settingsIntent);
-                    //Toast.makeText(MainActivity.this, "Settings Open", Toast.LENGTH_LONG).show();
                 }
             });
             AlertDialog alertDialog = alertDialogBuilder.create();
@@ -305,7 +261,6 @@ public class MainActivity extends AppCompatActivity {
         return mIpAddress = mFirstPart + "." + mSecondPart + "." + mThirdPart + "." + mFourthPart;
     }
 
-    //Вынести все это потом в отдельный класс
     private boolean isNetworkConnected() {
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();

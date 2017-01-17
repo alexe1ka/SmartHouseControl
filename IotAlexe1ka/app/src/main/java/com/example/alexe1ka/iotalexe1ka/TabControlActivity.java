@@ -34,12 +34,11 @@ import static com.example.alexe1ka.iotalexe1ka.ConstRequest.getUrl;
  */
 
 public class TabControlActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private Toolbar mToolbar;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
     private String ipAddr;
-
-    private DataBaseHelper myDb;
+    private DataBaseHelper mMyDb;
 
 
     @Override
@@ -47,16 +46,16 @@ public class TabControlActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabcontrol);
         ipAddr = getIntent().getExtras().getString("ipAddr");
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(mViewPager);
+        mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
 
         //listener's
-        myDb = new DataBaseHelper(getApplicationContext());
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mMyDb = new DataBaseHelper(getApplicationContext());
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 Log.d("OnPageScrolled" + position, String.valueOf(position));
@@ -80,7 +79,7 @@ public class TabControlActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     mTemp.setText(reqT.getTemperature());
-                    myDb.insertData(mTemp.getText().toString(), getDateTime());
+                    mMyDb.insertData(mTemp.getText().toString(), getDateTime());
 
                     //REQUEST TWO
                     AsyncRequestToEsp getHum = new AsyncRequestToEsp(getApplicationContext());
@@ -95,7 +94,6 @@ public class TabControlActivity extends AppCompatActivity {
                     mHum.setText(reqH.getHumidity());
 
                     GraphView graphView = (GraphView) findViewById(R.id.graph);
-
                     graphView.removeAllSeries();
                 }
             }
@@ -149,7 +147,6 @@ public class TabControlActivity extends AppCompatActivity {
     }
 
     private String getDateTime() {
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()); удалил HH
         SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);

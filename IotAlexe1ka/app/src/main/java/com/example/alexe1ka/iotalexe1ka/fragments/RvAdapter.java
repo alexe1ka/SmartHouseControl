@@ -63,7 +63,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN0_OFF));
                         }
-                        //Toast.makeText(mContext, "Clicked1", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         if (holder.mToggleButton.isChecked()) {
@@ -71,7 +70,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN1_OFF));
                         }
-                        //Toast.makeText(mContext, "Clicked2", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         if (holder.mToggleButton.isChecked()) {
@@ -79,7 +77,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN2_OFF));
                         }
-                        //Toast.makeText(mContext, "Clicked3", Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
                         if (holder.mToggleButton.isChecked()) {
@@ -87,7 +84,6 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN3_OFF));
                         }
-                        //Toast.makeText(mContext, "Clicked4", Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
                         if (holder.mToggleButton.isChecked()) {
@@ -95,12 +91,10 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
                         } else {
                             new AsyncRequestToEsp(mContext).execute(getUrl(mIpAddr, PIN4_OFF));
                         }
-                        //Toast.makeText(mContext, "Clicked5", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
         });
-
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.example.alexe1ka.iotalexe1ka;
 
-import android.widget.Toast;
-
 import com.example.alexe1ka.iotalexe1ka.model.ReplyToRequest;
 import com.google.gson.Gson;
 
