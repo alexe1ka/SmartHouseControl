@@ -67,6 +67,9 @@ public class InformationFragment extends Fragment {
                                 new DataPoint(Double.parseDouble(String.valueOf(mArrayTime.get(mSizeArr - 1))), Double.parseDouble(String.valueOf(mArrayTemp.get(mSizeArr - 1))))
                         }
                 );
+                mGraphView.getViewport().setMinX(Double.parseDouble(String.valueOf(mArrayTime.get(mSizeArr - 5))));
+                mGraphView.getViewport().setMaxX(Double.parseDouble(String.valueOf(mArrayTime.get(mSizeArr - 1))));
+                mGraphView.getViewport().setXAxisBoundsManual(true);
                 series.setDrawDataPoints(true);
                 series.setDataPointsRadius(10);
                 mGraphView.addSeries(series);
